@@ -5,7 +5,8 @@ import { NavLink } from "react-router-dom";
 const NavBar = () => {
     return (
     <div className="navBar-container">
-      <nav>
+      <nav className="nav_contents">
+        <img className="nav_logo" src="" alt="" />
         <ul className="navigation">
           <li>
             <NavLink exact to="/" activeClassName="nav-active">
@@ -13,7 +14,7 @@ const NavBar = () => {
             </NavLink>
           </li>
         </ul>
-      </nav>
+       </nav>
       </div>
     );
   };
