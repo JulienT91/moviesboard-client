@@ -1,9 +1,20 @@
-import React from 'react'
+import React, {useState,useEffect} from "react";
+import axios from "axios";
+import SingleMovies from "../component/SingleMovies";
 
 function Home() {
+    const [allMovies,setAllMovies] = useState([]);
+    const url = "http://localhost:3000/movies";
+    useEffect(() => {
+        axios.get(`${url}`).then((res) => {
+        setAllMovies(res.data);
+        })
+    },[]);
+    useEffect(()=>{
+    },[allMovies])
     return (
         <div>
-            
+          {allMovies.map((film,index) => <SingleMovies film={film} key={index} />)}  
         </div>
     )
 }
