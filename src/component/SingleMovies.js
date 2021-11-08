@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import DateFunction from '../service/DateFunction';
 // import { Link } from 'react-router-dom';
 
 function SingleMovies({film,id}) {
@@ -15,7 +16,7 @@ function SingleMovies({film,id}) {
         <div>
             {/* <Link to={{ pathname: "/details", search=`${id}`}}> */}
                 <h1>{film.title}</h1>
-                <h2>{film.release_date}</h2>
+                <h2>{DateFunction.DateForm(film.release_date)}</h2>
                 <figure>
                     <img src={film.backdrop} alt={film.title} />
                     <figcaption>

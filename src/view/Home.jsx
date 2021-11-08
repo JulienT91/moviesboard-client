@@ -6,11 +6,13 @@ function Home() {
     const [allMovies,setAllMovies] = useState([]);
     const url = "http://localhost:3000/movies";
     useEffect(() => {
-        axios.get(`${url}`).then((res) => {
+        axios.get(`${url}`)
+        .then((res) => {
         setAllMovies(res.data);
         })
     },[]);
     useEffect(()=>{
+      console.log(allMovies);
     },[allMovies])
     return (
         <div>
