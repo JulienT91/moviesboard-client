@@ -6,7 +6,7 @@ const NavBar = () => {
     return (
     <div className="navBar-container">
       <nav className="nav_contents">
-        <img className="nav_logo" src="" alt="" />
+        <h1 className="nav_title">MoviesBoard</h1>
         <ul className="navigation">
           <li>
             <NavLink exact to="/" activeClassName="nav-active">

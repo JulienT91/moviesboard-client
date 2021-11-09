@@ -16,7 +16,12 @@ function Home() {
     },[allMovies])
     return (
         <div>
-          {allMovies.map((film,index) => <SingleMovies film={film} key={index} />)}  
+          <form name="search_form">
+            <input type="checkbox" />
+            <input type="checkbox" />
+            <input type="checkbox" />
+          </form>
+          {allMovies.map((film,index) => <SingleMovies  film={film} key={index} />)}  
         </div>
     )
 }
