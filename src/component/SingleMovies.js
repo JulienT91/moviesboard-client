@@ -13,19 +13,21 @@ function SingleMovies({film}) {
         setUpdate(alert("Delete"));
     }
     return ( 
-        <div>
+        <div className="movie">
              <Link to={`details/${id}`}>
-                <h1>{film.title}</h1>
-                <h2>{DateFunction.DateForm(film.release_date)}</h2>
-                <figure>
-                    <img src={film.backdrop} alt={film.title} />
-                    <figcaption>
-                    {film.description}
-                    </figcaption>
-                </figure>
+                <div className="zoom__img">
+                  <img className="card-img-transition" src={film.poster} alt={film.title} />
+                </div>
+                <div className="movie__info">
+                    <h2>{film.title}</h2>
+                 </div>
+                 <div className="over__desc">
+                    <h3>{DateFunction.DateForm(film.release_date)}</h3>
+                     <p>{film.description}</p>
+                 </div>
             </Link>
-            <button onClick={handleEdit}>Modifier</button>
-            <button onClick={handleDelete}>Supprimer</button>
+            <button  onClick={handleEdit}>Modifier</button>
+            <button  onClick={handleDelete}>Supprimer</button>
         </div>
     )
 }

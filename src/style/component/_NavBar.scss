@@ -1,4 +1,13 @@
-.nav_title {
-    font-family: $h1font;
-    color:$titleH1;
+.navBar-container {
+    padding: 1.2rem;
+    background-color:$navBarcolor;
+    .nav_contents {
+        display: flex;
+        align-items: center;
+    
+        .nav_title {
+            font-family: $h1font;
+            color:$titleH1;
+        }
+    }
 }

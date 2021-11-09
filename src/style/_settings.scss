@@ -1,6 +1,28 @@
 //font settings 
 @import url('https://fonts.googleapis.com/css2?family=Martel+Sans&display=swap'); // title font
 $h1font:'Martel Sans', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+$generalFont:'Kanit', sans-serif;
 // colors settings 
-$titleH1:#E50914;
+$titleH1:#db0000;
+$navBarcolor:#1b1b1b;
+$white:#FEFEFE;
+$bgc:#292929;
+$moviebgc:#444444;
+* {
+    box-sizing: border-box;
+    font-family: $generalFont;
+}
+body {
+     margin: 0;
+    background-color: $bgc;
+
+    a {
+        color:#FEFEFE;
+        text-decoration: none;
+    }
+    ul {
+        list-style: none;
+    }
+}
 
