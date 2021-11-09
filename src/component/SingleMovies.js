@@ -1,17 +1,10 @@
-import React,{useState} from 'react';
+import React from 'react';
 import DateFunction from '../service/DateFunction';
 import { Link } from 'react-router-dom';
+import Button from './Button';
 
 function SingleMovies({film}) {
-    const [update, setUpdate] = useState("");
     const id = film.id;
-    const handleEdit = () => {
-      setUpdate(alert("Edit"));
-    }
-
-    const handleDelete = () => {
-        setUpdate(alert("Delete"));
-    }
     return ( 
         <div className="movie">
              <Link to={`details/${id}`}>
@@ -26,8 +19,7 @@ function SingleMovies({film}) {
                      <p>{film.description}</p>
                  </div>
             </Link>
-            <button  onClick={handleEdit}>Modifier</button>
-            <button  onClick={handleDelete}>Supprimer</button>
+            <Button />
         </div>
     )
 }

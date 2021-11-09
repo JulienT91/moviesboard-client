@@ -4,14 +4,15 @@ $h1font:'Martel Sans', sans-serif;
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 $generalFont:'Kanit', sans-serif;
 // colors settings 
-$titleH1:#db0000;
-$navBarcolor:#1b1b1b;
-$white:#FEFEFE;
-$bgc:#292929;
-$moviebgc:#444444;
+$navBarcolor:#302d2d;
+$titleH1:#a7a9d2;
+$gencolor:#fff;
+$bgc:#3d3b3b;
+$moviebgc:#464343;
 * {
     box-sizing: border-box;
     font-family: $generalFont;
+    color: $gencolor;
 }
 body {
      margin: 0;
