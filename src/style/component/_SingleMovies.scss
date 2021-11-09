@@ -1,8 +1,7 @@
 .movie__container {
-    display: grid;
-    grid-template-areas: ". . .";
-    gap: 1.5rem;
-    place-content: center;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
 }
 .movie {
     background-color: $moviebgc;
@@ -44,7 +43,7 @@
         padding: 1rem;
         button {
             height:2rem;
-            width: 6rem;
+            width: 5rem;
         }
     }
 }
