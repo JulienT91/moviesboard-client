@@ -18,7 +18,7 @@ function Details() {
       };
     movieResults();
     },[]);
-    if(!movieDetails) return <p>Loading..</p>
+    if(!movieDetails) return <p>Error, nothing found..</p>
     return (
         <div>
             <h1>{movieDetails.title}</h1>  
