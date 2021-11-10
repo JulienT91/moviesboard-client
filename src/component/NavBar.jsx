@@ -13,6 +13,11 @@ const NavBar = () => {
                 Accueil
             </NavLink>
           </li>
+          <li>
+            <NavLink exact to="/add" activeClassName="nav-active">
+                Ajouter un film
+            </NavLink>
+          </li>
         </ul>
        </nav>
       </div>

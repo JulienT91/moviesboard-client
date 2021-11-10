@@ -1,7 +1,7 @@
 import React from 'react';
 import DateFunction from '../service/DateFunction';
 import { Link } from 'react-router-dom';
-import Button from './Button';
+import Buttons from './Buttons';
 
 function SingleMovies({film}) {
     const id = film.id;
@@ -19,7 +19,7 @@ function SingleMovies({film}) {
                      <p>{film.description}</p>
                  </div>
             </Link>
-            <Button />
+            <Buttons />
         </div>
     )
 }

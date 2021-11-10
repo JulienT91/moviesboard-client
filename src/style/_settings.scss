@@ -25,5 +25,8 @@ body {
     ul {
         list-style: none;
     }
+    input,textarea,.form_btn_add {
+        color: $moviebgc;
+    }
 }
 

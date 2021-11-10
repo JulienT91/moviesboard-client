@@ -6,6 +6,7 @@ import './App.scss';
 import Home from "./view/Home";
 import NavBar from "./component/NavBar";
 import Details from "./view/Details";
+import Add from "./view/Add";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/details/:id" exact component={Details} />
+          <Route path="/add" exact component={Add} />
         </Switch>
   </Router>
   );

@@ -25,22 +25,7 @@ function Home() {
           {allMovies.map((film,index) => <FormFilter  film={film} key={index} />)}  
         </div>
         <div className="movie__container">
-          {allMovies.map((film,index) => <SingleMovies  film={film} key={index} />)}  
-          {allMovies.map((film,index) => <SingleMovies  film={film} key={index} />)}
-          {allMovies.map((film,index) => <SingleMovies  film={film} key={index} />)}  
-          {allMovies.map((film,index) => <SingleMovies  film={film} key={index} />)}    
           {allMovies.map((film,index) => <SingleMovies  film={film} key={index} />)} 
-          {allMovies.map((film,index) => <SingleMovies  film={film} key={index} />)} 
-          {allMovies.map((film,index) => <SingleMovies  film={film} key={index} />)}
-          {allMovies.map((film,index) => <SingleMovies  film={film} key={index} />)}  
-          {allMovies.map((film,index) => <SingleMovies  film={film} key={index} />)}
-          {allMovies.map((film,index) => <SingleMovies  film={film} key={index} />)}  
-          {allMovies.map((film,index) => <SingleMovies  film={film} key={index} />)}    
-          {allMovies.map((film,index) => <SingleMovies  film={film} key={index} />)} 
-          {allMovies.map((film,index) => <SingleMovies  film={film} key={index} />)} 
-          {allMovies.map((film,index) => <SingleMovies  film={film} key={index} />)}    
-   
-   
         </div>
       </div>
     )
