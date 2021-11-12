@@ -10,19 +10,6 @@ function Add() {
         release_date:""
        
     });
-    const URL = `https://api.themoviedb.org/3/search/movie?api_key=4f85342b8749c4d0e6c0f36d0481cbea&language=en-US&page=1&include_adult=false&query=${value.title}}`;
-    const [allApimovie, allApiMovie] = useState(null);
-    useEffect(() => {
-
-      const apiResults = () => {
-        axios.get(`${URL}`)
-        .then((res) => {
-          console.log(res.data);
-          allApiMovie(res.data.results);
-        })
-      };
-      apiResults();
-    },[]);
     const handleChange = (e) =>{
         setValue({
             ...value,
@@ -30,7 +17,18 @@ function Add() {
         });
     }
     
+    
     const handleSubmit = (e) => {
+        const URL = `https://api.themoviedb.org/3/search/movie?api_key=4f85342b8749c4d0e6c0f36d0481cbea&language=en-US&page=1&include_adult=false&query=${value.title}}`;
+        axios.get(`${URL}`).then((res) => {
+          console.log(res.data.results);
+          res.data.results.map((result) => {
+            const newMovie = {
+              
+            }
+          })
+          }
+        )
         console.log(value.title);
         console.log(value.release_date);
         e.preventDefault();
@@ -40,7 +38,7 @@ function Add() {
         <div className="searchBar_container">
         <div className="content-section">
         <form className="form_sb" onSubmit={handleSubmit}>
-          <select id="catagorie"  className="select_sb" name="categories" onChange={null}>
+          <select id="catagorie"  className="select_sb" name="categories" onChange={handleChange}>
             <option value="action">Action</option>
             <option value="animation">Animation</option>
             <option value="horreur">Horreur</option>
