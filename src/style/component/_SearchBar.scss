@@ -1,0 +1,42 @@
+
+  .form_sb {
+    background-color: #fff;
+    height: 40px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    margin: 2rem;
+  }
+  
+  .form_sb > input {
+    border-radius: 30px;
+    border: none;
+    height: 30px;
+    padding-left: 12px;
+    width: 30%;
+    cursor: pointer;
+    /* border: 1px solid #f0f0f0; */
+  }
+  
+  .select_sb {
+    border: 2px solid #f0f0f0;
+    color: $titleH1;
+    border-radius: 30px;
+    padding: 6px;
+    width: 300px;
+    cursor: pointer;
+    option{
+        color: $titleH1;
+    }
+  }
+  
+  .text-content {
+    margin-bottom: 20px;
+  }
+
+  .largebtn {
+      cursor:pointer;
+      border:none;
+      background-color:#fff;
+      color:$titleH1;
+  }

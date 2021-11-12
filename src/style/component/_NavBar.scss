@@ -1,13 +1,20 @@
 .navBar-container {
-    padding: 1.2rem;
+    padding: 0.5rem;
     background-color:$navBarcolor;
     .nav_contents {
         display: flex;
         align-items: center;
+        width: 100%;
     
         .nav_title {
             font-family: $h1font;
             color:$titleH1;
+            font-size: 1rem;
         }
+
+    }
+    .navigation {
+        display: flex;
+        gap: 2rem;
     }
 }

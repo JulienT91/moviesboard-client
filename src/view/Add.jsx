@@ -1,54 +1,71 @@
-import React, { useState } from 'react'
+
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 
 
 
 function Add() {
-    const API_KEY = "4f85342b8749c4d0e6c0f36d0481cbea";
-    const addNewMovie = axios.create({
-        baseURL: "https://api.themoviedb.org/3"
-    })
     const [value,setValue] = useState({
         title:"",
-        date:"",
-        categories:[],
-        description:""
+        release_date:""
+       
     });
+    const URL = `https://api.themoviedb.org/3/search/movie?api_key=4f85342b8749c4d0e6c0f36d0481cbea&language=en-US&page=1&include_adult=false&query=${value.title}}`;
+    const [allApimovie, allApiMovie] = useState(null);
+    useEffect(() => {
 
+      const apiResults = () => {
+        axios.get(`${URL}`)
+        .then((res) => {
+          console.log(res.data);
+          allApiMovie(res.data.results);
+        })
+      };
+      apiResults();
+    },[]);
     const handleChange = (e) =>{
-        setValue({...value,[e.target.name]:e.target.value})
+        setValue({
+            ...value,
+            [e.target.name]:e.target.value
+        });
     }
-
+    
     const handleSubmit = (e) => {
-        console.log(value);
-        alert("Le film à bien été ajouté");
+        console.log(value.title);
+        console.log(value.release_date);
         e.preventDefault();
     }
     return (
-        <div className="form__container" >
-            <form className="form__group" 
-             onSubmit={handleSubmit}
-            >
-                <div className="inputs_group">
-                    <div className="input_wrapper">
-                        <label htmlFor="title">Titre:</label>
-                        <input  value={value.title} onChange={handleChange} type="text" name="title" id="title" /></div>
-                    <div className="input_wrapper">
-                        <label htmlFor="categories">Catégories:</label>
-                        <input value={value.categories} onChange={handleChange} name="categories" id="categories" /></div>
-                    </div>
-                    <div className="input_wrapper">
-                        <label htmlFor="date">Date:</label>
-                        <input value={value.date} onChange={handleChange} type="date" name="date" id="date"  />
-                    </div>
-                    <div className="input_wrapper">
-                        <textarea value={value.description} name="description" onChange={handleChange} id="description" cols="30" rows="10"></textarea>
-                    </div>
-                    <div className="input_wrapper">
-                        <button className="form_btn_add" type="submit" value="Ajouter">Ajouter</button>
-                    </div>
-            </form>
-        </div>
+        <>
+        <div className="searchBar_container">
+        <div className="content-section">
+        <form className="form_sb" onSubmit={handleSubmit}>
+          <select id="catagorie"  className="select_sb" name="categories" onChange={null}>
+            <option value="action">Action</option>
+            <option value="animation">Animation</option>
+            <option value="horreur">Horreur</option>
+            <option value="drame">Drame</option>
+          </select>
+          <input type="text" name="title" className="search_sb" placeholder="Tapez votre mot de recherche" onChange={handleChange}></input>
+
+          <input
+            type="date"
+            name="release_date"
+            value={value.release_date}
+            className="date_sb"
+            onChange={handleChange}
+          />
+          <button className="largebtn" type="submit">
+            Valider
+          </button>
+        </form>
+      </div>
+    </div>
+    <div>
+        
+    </div>
+    </>
+
     )
 }
 

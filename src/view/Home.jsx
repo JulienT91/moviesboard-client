@@ -1,8 +1,7 @@
 import React, {useState,useEffect} from "react";
 import axios from "axios";
 import SingleMovies from "../component/SingleMovies";
-import FormFilter from "../component/FormFilter";
-
+import SearchBar from "../component/SearchBar";
 function Home() {
   // fetch all data part
   const [allMovies,setAllMovies] = useState([]); // to put all movies in empty array
@@ -18,14 +17,15 @@ function Home() {
     },[allMovies])
 
 
-
     return (
-      <div>
-        <div className="form__container">
-          {allMovies.map((film,index) => <FormFilter  film={film} key={index} />)}  
-        </div>
+      <div className="main_content">
+        <div className="main_container">
+        <h1> Bienvenue sur l'application Movies Board</h1>
+          <SearchBar /> 
         <div className="movie__container">
-          {allMovies.map((film,index) => <SingleMovies  film={film} key={index} />)} 
+          {allMovies && allMovies.map((film,index) => <SingleMovies  film={film} key={index}  />)} 
+        </div>
+
         </div>
       </div>
     )
