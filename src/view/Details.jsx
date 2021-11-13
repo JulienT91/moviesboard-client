@@ -39,6 +39,12 @@ function Details() {
               <div className="meta__body__info__categories">
                 <p><span className="grey_text">Catégories : </span>{movieDetails.categories.join()}</p>
               </div>
+              <span>Avec :</span>
+              {movieDetails && movieDetails.actors.map(({name},index) => (
+              <div key={index} className="meta__body__actors">
+                <a href="#actors">{name}</a>
+              </div>
+              ))}
               <div className="meta__body__button">
                 <Buttons />
               </div>
@@ -53,12 +59,15 @@ function Details() {
             {movieDetails.description}
           </div>
         </section>
-        <section className="details__actors">
+        <section className="details__actors" id="actors">
           <div className="titleBar">
+            <h2>
             acteurs et actrices
+            </h2>
           </div>
+          <div className="card__actor__container row">
           {movieDetails && movieDetails.actors.map(({name,photo,character},index) => (
-            <div key={index} className="card__actors">
+            <div key={index} className="card__actors column">
               <figure className="thumbnail">
                 <img className="thumbnail__img" src={photo} alt={name} />
               </figure>
@@ -69,18 +78,20 @@ function Details() {
                   </h3>
                 </div>
                 <div className="meta__role">
-                  <p>Rôle : {character}</p>
+                  <p className="grey_text">Rôle : {character}</p>
                 </div>
               </div>
             </div>
             ))}
+          </div>
         </section>
         <section className="details__similar">
           <div className="titleBar">
-              films similaires
+            <h2>Films Similaires</h2>
           </div>
+          <div className="card__similar__container row">
            {movieDetails && movieDetails.similar_movies.map(({title,poster,release_date},index) => (
-             <div key={index} className="card__similar">
+             <div key={index} className="card__similar column">
                 <figure className="thumbnail">
                 <img className="thumbnail__img" src={poster} alt={title} />
               </figure>
@@ -96,6 +107,7 @@ function Details() {
               </div>
              </div>        
             ))}
+          </div>
         </section>
       </div>
       </>  
