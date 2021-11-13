@@ -4,12 +4,15 @@ $h1font:'Martel Sans', sans-serif;
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 $generalFont:'Kanit', sans-serif;
 // colors settings 
-$navBarcolor:#302d2d;
+$navBarcolor:#070d2d;
 $titleH1:#a7a9d2;
 $btnSearch:#a7a9d2;
 $gencolor:#fff;
-$bgc:#3d3b3b;
-$moviebgc:#464343;
+$bgc:#252443;
+$moviebgc:#070d2d;
+$sb-bgc:#070d2d;
+$btn-bgc:#546ee5;
+
 * {
     box-sizing: border-box;
     font-family: $generalFont;
@@ -19,7 +22,7 @@ $moviebgc:#464343;
 }
 body {
     background-color: $bgc;
-    
+
     a {
         color:#FEFEFE;
         text-decoration: none;

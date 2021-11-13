@@ -1,0 +1,19 @@
+.btn__container {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+    button {
+        height:2.3rem;
+        width: 6rem;
+        border:none;
+        font-family: $h1font;
+        background-color:$btn-bgc;
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 10px 30px 4px;
+        color: $gencolor;
+        border-radius: 25px;
+        &:hover{
+            background-color: $gencolor;
+            color:$btn-bgc;
+        }
+    }
+}

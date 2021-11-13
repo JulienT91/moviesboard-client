@@ -12,12 +12,20 @@
     .card__similar__container.row
      {
         display: grid;
-        grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
-        gap:1.5rem;
-        .thumbnail__img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        grid-template-columns: repeat(auto-fill,minmax(350px,1fr));
+        gap:1rem;
+        .card__actors.column {
+            background-color: $moviebgc;
+            border-radius:5px;
+            box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+            .meta {
+                padding: 1rem;
+            }
+            .thumbnail__img {
+                width: 100%;
+                height: 500px;
+                object-fit: cover;
+            }
         }
     }
 }

@@ -1,10 +1,12 @@
 .form_sb {
-  background-color: #fff;
+  background-color: $sb-bgc;
   height: 40px;
   border-radius: 50px;
   display: flex;
   align-items: center;
   margin: 2rem;
+
+
 }
 
 .form_sb .form_input {
@@ -14,11 +16,12 @@
   padding-left: 12px;
   width: 30%;
   cursor: pointer;
+  background-color: $sb-bgc;
   /* border: 1px solid #f0f0f0; */
 }
 
 .select_sb {
-  border: 2px solid #f0f0f0;
+  border: 2px solid $sb-bgc;
   color: $titleH1;
   border-radius: 30px;
   padding: 6px;
@@ -58,11 +61,18 @@
   }
 }
 .form_sb .search_sb {
-  width: 100%;
+  width:100%;
+}
+.form_sb .search_sb,.date_sb,.select_sb {
+  background-color: $sb-bgc;
+  border:none;
+  color: $gencolor;
 }
 .largebtn {
   cursor: pointer;
   border: none;
-  background-color: #fff;
+  margin: 10px;
+  border-radius: 50%;
+  background-color: $sb-bgc;
   color: $titleH1;
 }
