@@ -21,7 +21,7 @@ function Home() {
       <div className="main_content">
         <div className="main_container">
         <div className="home__titleBar">
-           <h1> bienvenue sur l'application Movies Board</h1>
+           <h1>bienvenue sur l'application Movies Board</h1>
         </div>
           <SearchBar /> 
         <div className="movie__container">
