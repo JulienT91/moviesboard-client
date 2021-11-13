@@ -1,7 +1,19 @@
-.movie__container {
-    display: flex;
+.movie__cont {
+    display: flex;  
     flex-wrap:wrap;
+}
+.actor__container,.similar__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
     justify-content: center;
+}
+.similar_title,.actor_title {
+    display: flex;
+    justify-content: center;
+}
+.similar__container {
+    padding: 1rem;
 }
 .movie {
     background-color: $moviebgc;
@@ -30,6 +42,8 @@
         .zoom__img {
           overflow: hidden;
           display: block;
+          max-width: auto;
+          max-height: 100%;
         .card-img-transition {
             transition: all 0.5s ease-in;
             &:hover {

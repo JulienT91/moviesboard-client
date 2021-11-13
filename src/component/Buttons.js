@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React from 'react'
+import React from 'react';
 function Buttons({id}) {
     const handleEdit = () => {
     }
@@ -13,7 +13,7 @@ function Buttons({id}) {
         <button  onClick={handleEdit}>Modifier</button>
         <button  onClick={() => {
             if(window.confirm("voulez vous supprimez ce film")){
-                handleDelete();
+                handleDelete(); // importer pop in via react
             }
         }}>Supprimer</button>
     </div>

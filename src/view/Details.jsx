@@ -25,41 +25,43 @@ function Details() {
                 <div className="details_container">
                   <div className="movie__cont">
                     <div className="zoom__img">
+                    <div className="details__info">
+                      <h2>Catégories:{movieDetails.categories.join()}</h2>
+                      <h3>{movieDetails.title}</h3>
+                      <h3>{DateFunction.DateForm(movieDetails.release_date)}</h3>
+                    </div>
                       <img className="card-img-transition" src={movieDetails.poster} alt={movieDetails.title} />
                     </div>
-                    <div className="details__info">
-                      <h2>{movieDetails.title}</h2>
-                      <h3>Catégorie:{movieDetails.categories.join()}</h3>
-                    </div>
+                      <Buttons id={movieDetails.id}  />
                     <div className="details__desc">
-                      <h3>{DateFunction.DateForm(movieDetails.release_date)}</h3>
+                       <h4>Synopsis:</h4>
                       <p>{movieDetails.description}</p>
                     </div>
                   </div>
+                  <h2 className="similar_title">Acteurs:</h2>
                   <div className="actor__container">
                      {movieDetails && movieDetails.actors.map(({name,photo,character},index) => (
                        <div  key={index} className="details_group">
                         <div className="details_wrapper">
-                          <h3>Nom:{name}</h3>
-                          <h3>Personnage:{character}</h3>
+                          <h3>Acteur:{name}</h3>
+                          <h4>Rôle:{character}</h4>
                           <img className="card-img-transition" src={photo} alt={name} />
                         </div>
                        </div>
                      ))}
                     </div>
-
-                    <div className="similar_details">
+                    <h2 className="similar_title">Film Similaires:</h2>
+                    <div className="similar__container">
                       {movieDetails && movieDetails.similar_movies.map(({title,poster,release_date},index) => (
                        <div  key={index} className="details_group">
                         <div className="details_wrapper">
+                          <img className="card-img-transition" src={poster} alt={title} />
                           <h3>Titre:{title}</h3>
                           <h3>Date de sortie:{DateFunction.DateForm(release_date)}</h3>
-                          <img className="card-img-transition" src={poster} alt={title} />
                         </div>
                        </div>
                      ))}
                      </div>
-                     <Buttons id={movieDetails.id}  />
                    </div>
       
     )

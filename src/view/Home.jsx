@@ -25,7 +25,6 @@ function Home() {
         <div className="movie__container">
           {allMovies && allMovies.map((film,index) => <SingleMovies  film={film} key={index}  />)} 
         </div>
-
         </div>
       </div>
     )
