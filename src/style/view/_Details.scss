@@ -8,6 +8,9 @@
         flex-wrap: wrap;
         gap: 1rem;
     }
+    .titleBar > h2 {
+        padding: 1rem 0rem;
+    }
     .card__actor__container.row,
     .card__similar__container.row
      {

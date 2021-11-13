@@ -5,6 +5,8 @@
         display: flex;
         align-items: center;
         width: 100%;
+        gap: 2rem;
+        padding: 1rem;
     
         .nav_title {
             font-family: $h1font;

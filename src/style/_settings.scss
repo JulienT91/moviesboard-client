@@ -22,7 +22,9 @@ $btn-bgc:#546ee5;
 }
 body {
     background-color: $bgc;
-
+    h1,h2,h3,h4 {
+        text-transform: capitalize;
+    }
     a {
         color:#FEFEFE;
         text-decoration: none;

@@ -20,7 +20,9 @@ function Home() {
     return (
       <div className="main_content">
         <div className="main_container">
-        <h1> Bienvenue sur l'application Movies Board</h1>
+        <div className="home__titleBar">
+           <h1> bienvenue sur l'application Movies Board</h1>
+        </div>
           <SearchBar /> 
         <div className="movie__container">
           {allMovies && allMovies.map((film,index) => <SingleMovies  film={film} key={index}  />)} 

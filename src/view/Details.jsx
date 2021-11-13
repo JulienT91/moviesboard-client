@@ -40,11 +40,13 @@ function Details() {
                 <p><span className="grey_text">Catégories : </span>{movieDetails.categories.join()}</p>
               </div>
               <span>Avec :</span>
-              {movieDetails && movieDetails.actors.map(({name},index) => (
-              <div key={index} className="meta__body__actors">
-                <a href="#actors">{name}</a>
+              <div className="actors__details">
+                {movieDetails && movieDetails.actors.map(({name},index) => (
+                <div key={index} className="meta__body__actors">
+                  <a href="#actors">{name}</a>
+                </div>
+                ))}
               </div>
-              ))}
               <div className="meta__body__button">
                 <Buttons />
               </div>

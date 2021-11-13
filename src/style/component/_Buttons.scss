@@ -11,6 +11,8 @@
         box-shadow: rgba(0, 0, 0, 0.56) 0px 10px 30px 4px;
         color: $gencolor;
         border-radius: 25px;
+        transition: all 0.5s;
+        cursor: pointer;
         &:hover{
             background-color: $gencolor;
             color:$btn-bgc;
