@@ -38,7 +38,7 @@ return (
           </li>
         </ul>
         <div className="nav-icon" onClick={handleClick}>
-          <i className={click ? "fa fa-times" : "fa fa-bars"}><FaBars /></i>
+          <i className={click}><FaBars /></i>
         </div>
       </div>
     </nav>
