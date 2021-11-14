@@ -20,7 +20,7 @@ function SingleMovies({film}) {
                      <p>{film.description}</p>
                      <Link to={`details/${id}`}><span class="details_link">Détails du film</span></Link>
                  </div>
-            <Buttons />
+            <Buttons id={id}/>
         </div>
     )
 }

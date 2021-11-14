@@ -12,7 +12,15 @@ return (
    <div className={click ? "main-container" : ""} onClick={()=>Close()} />
     <nav className="navbar" onClick={(e)=>e.stopPropagation()}>
       <div className="nav-container">
-        <h1>moviesboard</h1>
+      <NavLink
+              exact
+              to="/"
+              activeClassName="active"
+              className="nav-links"
+              onClick={click ? handleClick : null}
+            >
+             <h1>moviesboard</h1>
+        </NavLink>
         <ul className={click ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
             <NavLink

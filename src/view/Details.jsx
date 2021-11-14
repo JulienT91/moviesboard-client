@@ -48,7 +48,7 @@ function Details() {
                 ))}
               </div>
               <div className="meta__body__button">
-                <Buttons />
+                <Buttons id={id} />
               </div>
             </div>
           </div>
@@ -94,9 +94,6 @@ function Details() {
           <div className="card__similar__container row">
            {movieDetails && movieDetails.similar_movies.map(({title,poster,release_date},index) => (
              <div key={index} className="card__similar column">
-                <figure className="thumbnail">
-                <img className="thumbnail__img" src={poster} alt={title} />
-              </figure>
               <div className="meta">
                 <div className="meta__title">
                   <h3>
@@ -107,6 +104,9 @@ function Details() {
                   <p>{DateFunction.DateForm(release_date)}</p>
                 </div>
               </div>
+                <figure className="thumbnail">
+                <img className="thumbnail__img" src={poster} alt={title} />
+              </figure>
              </div>        
             ))}
           </div>
