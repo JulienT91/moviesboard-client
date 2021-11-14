@@ -13,7 +13,6 @@ function Home() {
     })
   },[]);
   useEffect(()=>{
-    console.log(allMovies);
     },[allMovies])
 
 

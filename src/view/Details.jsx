@@ -6,13 +6,11 @@ import Buttons from '../component/Buttons';
 
 function Details() {
     const id = useParams().id;
-    console.log(id);
     const [movieDetails, setMovieDetails] = useState(null);
     useEffect(() => {
       const movieResults = () => {
         axios.get(`http://localhost:3000/movies/${id}`)
         .then((res) => {
-          console.log(res.data);
           setMovieDetails(res.data);
         })
       };
