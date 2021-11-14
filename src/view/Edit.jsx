@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-function Edit({id}) {
+function Edit() {
 
     return (
         <div className="edit__page">
