@@ -1,7 +1,8 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 const IMG_PATH = `https://image.tmdb.org/t/p/original`;
+const API_KEY = `4f85342b8749c4d0e6c0f36d0481cbea`;
 
 
 function Add() {
@@ -30,7 +31,7 @@ function Add() {
     setInputTitle({
       typing: false,
       inputTimeout: setTimeout(() => {
-        const URL_MOVIE = `https://api.themoviedb.org/3/search/movie?api_key=4f85342b8749c4d0e6c0f36d0481cbea&query=${value.title}}`;
+        const URL_MOVIE = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${value.title}`;
         axios.get(`${URL_MOVIE}`).then((res) => {
           setMoviesList(res.data.results);
         })
@@ -59,14 +60,23 @@ function Add() {
                 {moviesList.map((movie, i) => (
                   <li key={i} data-id={movie.id} onClick={(e) => {
 
-                    axios.get(`https://api.themoviedb.org/3/movie/${e.target.dataset.id}?api_key=4f85342b8749c4d0e6c0f36d0481cbea`).then((res) => {
+                    axios.get(`https://api.themoviedb.org/3/movie/${e.target.dataset.id}?api_key=${API_KEY}`).then((res) => {
                       const newMovie = {
                         title: res.data.title,
                         release_date: res.data.release_date,
                         description: res.data.overview,
                         backdrop: IMG_PATH + res.data.backdrop_path,
                         poster: IMG_PATH + res.data.poster_path,
-
+                        // actors:{
+                        //   name:,
+                        //   photo:,
+                        //   character:,
+                        // }
+                        // similar_movies:{
+                        //   title:,
+                        //   poster:,
+                        //   release_date:
+                        // }
                       }
                       setValue({ ...value, ...newMovie });
                     })
@@ -89,9 +99,18 @@ function Add() {
           </form>
         </div>
       </div>
-      <div >
-
+      <div>
+    <form action="">
+        <input type="text" name={value.title} value={value.title} />
+         <input type="date" value={value.release_date} />
+      <div className="img__container__card">
+        <figure>
+          <img src={value.backdrop} alt={null} />
+        </figure>
       </div>
+    </form>
+    </div>
+
     </>
 
   )

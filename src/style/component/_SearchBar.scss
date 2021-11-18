@@ -47,10 +47,10 @@
     max-height: 300px;
     overflow-y: auto;
     padding: 0;
-    // display: none;
-    // &.open{
-    //   display: block;
-    // }
+     display: none;
+     &.open{
+        display: block;
+     }
     li{
       color: black;
       cursor: pointer;

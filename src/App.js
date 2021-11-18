@@ -12,7 +12,7 @@ import Add from "./view/Add";
 
 function App() {
   return (
-  <Router basename="/">
+  <Router>
     <NavBar/>
         <Switch>
           <Route path="/" exact component={Home} />
