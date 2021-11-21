@@ -13,12 +13,22 @@ function Add() {
     backdrop: "",
     poster: ""
   });
+
+
+  const [actorValue, setActorValue] = useState({
+    name: "",
+    photo:"",
+    character: ""
+  });
+
+
   const [inputTitle, setInputTitle] = useState({
     typing: false,
     inputTimeout: 0
   })
   const [moviesList, setMoviesList] = useState([]);
   const [isOptionsOpen, setOptionsOpen] = useState(false);
+  const [showForm,setShowForm] = useState(false);
 
 
   const handleChange = (e) => {
@@ -26,6 +36,10 @@ function Add() {
       ...value,
       [e.target.name]: e.target.value
     });
+    setActorValue({
+      ...actorValue,
+      [e.target.name]: e.target.value
+    })
     if (inputTitle.inputTimeout) clearTimeout(inputTitle.inputTimeout);
 
     setInputTitle({
@@ -39,6 +53,10 @@ function Add() {
     })
   }
 
+  const handleShowForm = (e) => {
+    e.preventDefault();
+    setShowForm(!showForm);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,7 +77,7 @@ function Add() {
               <ul className={`autocomplete_options ${isOptionsOpen ? "open" : ""}`}>
                 {moviesList.map((movie, i) => (
                   <li key={i} data-id={movie.id} onClick={(e) => {
-
+                    // Movies description
                     axios.get(`https://api.themoviedb.org/3/movie/${e.target.dataset.id}?api_key=${API_KEY}`).then((res) => {
                       const newMovie = {
                         title: res.data.title,
@@ -67,19 +85,22 @@ function Add() {
                         description: res.data.overview,
                         backdrop: IMG_PATH + res.data.backdrop_path,
                         poster: IMG_PATH + res.data.poster_path,
-                        // actors:{
-                        //   name:,
-                        //   photo:,
-                        //   character:,
-                        // }
-                        // similar_movies:{
-                        //   title:,
-                        //   poster:,
-                        //   release_date:
-                        // }
                       }
-                      setValue({ ...value, ...newMovie });
+                    setValue({ ...value, ...newMovie });
                     })
+                    // Actors list
+                    axios.get(`https://api.themoviedb.org/3/movie/${e.target.dataset.id}/credits?api_key=${API_KEY}`).then((res) => {
+                      // need to add useState before this ..
+                      const newActorList = {
+                        name:res.data.cast.name,
+                        photo:IMG_PATH + res.data.cast.profile_path,
+                        character:res.data.cast.character
+                      }
+                    setActorValue({...actorValue,...newActorList})
+                    })
+                    // Similar Movies 
+
+
                   }}>
                     {movie.title}
                   </li>
@@ -93,22 +114,43 @@ function Add() {
               className="date_sb form_input"
               onChange={handleChange}
             />
-            <button className="largebtn" type="submit">
+            <button className="largebtn" type="submit" onClick={handleShowForm}>
               Valider
             </button>
           </form>
         </div>
       </div>
       <div>
-    <form action="">
-        <input type="text" name={value.title} value={value.title} />
-         <input type="date" value={value.release_date} />
-      <div className="img__container__card">
-        <figure>
-          <img src={value.backdrop} alt={null} />
-        </figure>
+      <div className="container__card">
+      {showForm && (
+        <>
+        <form>
+          <h1>Movie description</h1>
+          <div className="movie__part">
+            <div className="title__movie">
+              <input type="text" onChange={handleChange} value={value.title} />
+            </div>
+            <div className="release__date__movie">
+              <input type="date" onChange={handleChange} value={value.release_date} />
+            </div>
+            <div className="img__movie">
+              <input type="file" name="backdrop__movie" id="" />
+              <input type="file" name="poster__movie" id="" />
+            </div>
+            <div className="description__movie">
+              <textarea name="" id="" cols="30" rows="10" onChange={handleChange} value={value.description}></textarea>
+            </div>
+          </div>
+          {/* Actors Part */}
+          <div className="actors__part">
+            <div className="actor__name">
+                <input type="text" onChange={handleChange} value={actorValue.name} />
+              </div>
+          </div>
+        </form>
+        </>
+      )}
       </div>
-    </form>
     </div>
 
     </>
