@@ -21,6 +21,12 @@ function Add() {
     character: ""
   });
 
+  const [similarValue, setSimilarValue] = useState({
+    title: "",
+    poster:"",
+    release_date: ""
+  });
+
 
   const [inputTitle, setInputTitle] = useState({
     typing: false,
@@ -38,6 +44,10 @@ function Add() {
     });
     setActorValue({
       ...actorValue,
+      [e.target.name]: e.target.value
+    })
+    setSimilarValue({
+      ...similarValue,
       [e.target.name]: e.target.value
     })
     if (inputTitle.inputTimeout) clearTimeout(inputTitle.inputTimeout);
@@ -91,6 +101,7 @@ function Add() {
                     // Actors list
                     axios.get(`https://api.themoviedb.org/3/movie/${e.target.dataset.id}/credits?api_key=${API_KEY}`).then((res) => {
                       // need to add useState before this ..
+                      console.log(res.data);
                       const newActorList = {
                         name:res.data.cast.name,
                         photo:IMG_PATH + res.data.cast.profile_path,
@@ -98,8 +109,16 @@ function Add() {
                       }
                     setActorValue({...actorValue,...newActorList})
                     })
-                    // Similar Movies 
-
+                    // Similar Movies list 
+                    axios.get(`https://api.themoviedb.org/3/movie/${e.target.dataset.id}/similar?api_key=${API_KEY}`).then((res) => {
+                      console.log(res.data);
+                      const similarMovieList = {
+                        // title:res.data.cast.name,
+                        // poster:IMG_PATH + res.data.cast.profile_path,
+                        // release_date:res.data.cast.character
+                      }
+                    setSimilarValue({...similarValue,...similarMovieList})
+                    })
 
                   }}>
                     {movie.title}
@@ -134,8 +153,12 @@ function Add() {
               <input type="date" onChange={handleChange} value={value.release_date} />
             </div>
             <div className="img__movie">
-              <input type="file" name="backdrop__movie" id="" />
-              <input type="file" name="poster__movie" id="" />
+              <figure>
+                <img src={value.backdrop} name="backdrop__movie" alt={value.title} />
+              </figure>
+              <figure>
+                <img src={value.poster} name="poster__movie" alt={value.title} />
+              </figure>
             </div>
             <div className="description__movie">
               <textarea name="" id="" cols="30" rows="10" onChange={handleChange} value={value.description}></textarea>
@@ -147,6 +170,9 @@ function Add() {
                 <input type="text" onChange={handleChange} value={actorValue.name} />
               </div>
           </div>
+          <button type="submit">
+            Ajouter un film
+          </button>
         </form>
         </>
       )}
