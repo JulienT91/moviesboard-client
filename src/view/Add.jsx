@@ -31,7 +31,17 @@ function Add() {
     typing: false,
     inputTimeout: 0
   })
+
+  
+  const [actorForm, setActorForm] = useState(false);
+  const [actorData, setActorData] = useState(defaultActorData);
+  
+  const [movieForm, setMovieForm] = useState(false);
+  const [movieData, setMovieData] = useState(defaultMovieData);
+  
   const [moviesList, setMoviesList] = useState([]);
+  const [actorsList, setActorsList] = useState([])
+
   const [isOptionsOpen, setOptionsOpen] = useState(false);
   const [showForm,setShowForm] = useState(false);
   const [isInputEmpty,setIsImputEmpty] = useState(true);
@@ -43,16 +53,7 @@ function Add() {
       [e.target.name]: e.target.value
     });
 
-    
-
-    setActorValue({
-      ...actorValue,
-      [e.target.name]: e.target.value
-    })
-    setSimilarValue({
-      ...similarValue,
-      [e.target.name]: e.target.value
-    })
+  
     if (inputTitle.inputTimeout) clearTimeout(inputTitle.inputTimeout);
 
     setInputTitle({
@@ -156,7 +157,7 @@ function Add() {
           {/* Actors Part */}
           <div className="actors__part">
             <div className="actor__name">
-                <input type="text" onChange={handleChange} value={actorValue.name} />
+                <input type="text" onChange={handleChange} />
               </div>
           </div>
           <button type="submit">
