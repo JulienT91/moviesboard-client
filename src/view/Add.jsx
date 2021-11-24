@@ -14,7 +14,6 @@ function Add() {
     poster: ""
   });
 
-
   const [actorValue, setActorValue] = useState({
     name: "",
     photo:"",
@@ -35,6 +34,7 @@ function Add() {
   const [moviesList, setMoviesList] = useState([]);
   const [isOptionsOpen, setOptionsOpen] = useState(false);
   const [showForm,setShowForm] = useState(false);
+  const [isInputEmpty,setIsImputEmpty] = useState(true);
 
 
   const handleChange = (e) => {
@@ -42,6 +42,9 @@ function Add() {
       ...value,
       [e.target.name]: e.target.value
     });
+
+    
+
     setActorValue({
       ...actorValue,
       [e.target.name]: e.target.value
@@ -62,28 +65,36 @@ function Add() {
       }, 500)
     })
   }
-
-  const handleShowForm = (e) => {
-    e.preventDefault();
-    setShowForm(!showForm);
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault();
   }
+
+  const handleShowForm = (e) => {
+    if(value.title != "" && value.release_date != ""){
+    setIsImputEmpty(!isInputEmpty);
+    e.preventDefault();
+    setShowForm(!showForm);
+    }
+  }
+
   return (
     <>
       <div className="searchBar_container">
         <div className="content-section">
-          <form className="form_sb" onSubmit={handleSubmit}>
-            <select id="catagorie" className="select_sb" name="categories" onChange={handleChange}>
+          <form  className="form_sb" onSubmit={handleSubmit}>
+            <select id="catagorie" className="select_sb" name="categories" onChange={{handleChange}}>
               <option value="action">Action</option>
               <option value="animation">Animation</option>
               <option value="horreur">Horreur</option>
               <option value="drame">Drame</option>
             </select>
             <div className="title-wrapper">
-              <input type="text" onFocus={() => setOptionsOpen(true)} value={value.title} name="title" className="search_sb form_input" placeholder="Tapez votre mot de recherche" onChange={handleChange}></input>
+              <input 
+                  type="text"
+                  onFocus={() => setOptionsOpen(true)} value={value.title} 
+                  name="title" className="search_sb form_input"
+                  placeholder="Tapez votre mot de recherche"  
+                  onChange={handleChange}/>
               <ul className={`autocomplete_options ${isOptionsOpen ? "open" : ""}`}>
                 {moviesList.map((movie, i) => (
                   <li key={i} data-id={movie.id} onClick={(e) => {
@@ -133,7 +144,7 @@ function Add() {
               className="date_sb form_input"
               onChange={handleChange}
             />
-            <button className="largebtn" type="submit" onClick={handleShowForm}>
+            <button  className="largebtn" type="submit" onClick={handleShowForm}>
               Valider
             </button>
           </form>
@@ -147,10 +158,10 @@ function Add() {
           <h1>Movie description</h1>
           <div className="movie__part">
             <div className="title__movie">
-              <input type="text" onChange={handleChange} value={value.title} />
+              <input type="text" required onChange={handleChange} value={value.title} />
             </div>
             <div className="release__date__movie">
-              <input type="date" onChange={handleChange} value={value.release_date} />
+              <input type="date" required onChange={handleChange} value={value.release_date} />
             </div>
             <div className="img__movie">
               <figure>
@@ -161,7 +172,7 @@ function Add() {
               </figure>
             </div>
             <div className="description__movie">
-              <textarea name="" id="" cols="30" rows="10" onChange={handleChange} value={value.description}></textarea>
+              <textarea name="" id="" cols="30" rows="10" required onChange={handleChange} value={value.description}></textarea>
             </div>
           </div>
           {/* Actors Part */}
