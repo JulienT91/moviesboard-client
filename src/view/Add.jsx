@@ -14,17 +14,17 @@ function Add() {
     poster: ""
   });
 
-  const [actorValue, setActorValue] = useState({
+  const defaultActorData = {
     name: "",
     photo:"",
     character: ""
-  });
+  };
 
-  const [similarValue, setSimilarValue] = useState({
+  const defaultMovieData = {
     title: "",
     poster:"",
     release_date: ""
-  });
+  };
 
 
   const [inputTitle, setInputTitle] = useState({
@@ -70,7 +70,7 @@ function Add() {
   }
 
   const handleShowForm = (e) => {
-    if(value.title != "" && value.release_date != ""){
+    if(value.title !== "" && value.release_date !== ""){
     setIsImputEmpty(!isInputEmpty);
     e.preventDefault();
     setShowForm(!showForm);
@@ -109,28 +109,6 @@ function Add() {
                       }
                     setValue({ ...value, ...newMovie });
                     })
-                    // Actors list
-                    axios.get(`https://api.themoviedb.org/3/movie/${e.target.dataset.id}/credits?api_key=${API_KEY}`).then((res) => {
-                      // need to add useState before this ..
-                      console.log(res.data);
-                      const newActorList = {
-                        name:res.data.cast.name,
-                        photo:IMG_PATH + res.data.cast.profile_path,
-                        character:res.data.cast.character
-                      }
-                    setActorValue({...actorValue,...newActorList})
-                    })
-                    // Similar Movies list 
-                    axios.get(`https://api.themoviedb.org/3/movie/${e.target.dataset.id}/similar?api_key=${API_KEY}`).then((res) => {
-                      console.log(res.data);
-                      const similarMovieList = {
-                        // title:res.data.cast.name,
-                        // poster:IMG_PATH + res.data.cast.profile_path,
-                        // release_date:res.data.cast.character
-                      }
-                    setSimilarValue({...similarValue,...similarMovieList})
-                    })
-
                   }}>
                     {movie.title}
                   </li>
